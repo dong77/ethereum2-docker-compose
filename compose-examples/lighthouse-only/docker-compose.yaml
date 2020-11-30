@@ -16,13 +16,13 @@ services:
       - 30305:30303/tcp
       - 30305:30303/udp
     volumes:
-      - ./data/geth:/root/.ethereum
+      - /Users/d/ETH2/geth:/root/.ethereum
     <<: *logging
 
   beacon:
     image: sigp/lighthouse:${LIGHTHOUSE_DOCKER_TAG}
     volumes:
-      - ./data/sigmaprime/lighthouse:/root/.lighthouse
+      - /Users/d/ETH2/lighthouse:/root/.lighthouse
       - ./config/lighthouse/start-beacon-node.sh:/root/scripts/start-beacon-node.sh:ro
     ports:
       - 9000:9000/tcp
@@ -36,7 +36,7 @@ services:
     image: sigp/lighthouse:${LIGHTHOUSE_DOCKER_TAG}
     volumes:
       - ./config/lighthouse/validator/start-validator-client.sh:/root/scripts/start-validator-client.sh:ro
-      - ./wallets:/root/.lighthouse
+      - /Users/d/ETH2/wallets:/root/.lighthouse
     depends_on:
       - beacon
     env_file: ./config/lighthouse/validator/.env
@@ -54,7 +54,7 @@ services:
     - 127.0.0.1:9092:9090
     volumes:
     - ./config/prometheus/prometheus-lh.yaml:/etc/prometheus/prometheus.yml:ro
-    - ./data/prometheus:/prometheus
+    - ./Users/d/ETH2/prometheus:/prometheus
     <<: *logging
 
   grafana:
@@ -67,7 +67,7 @@ services:
       - 127.0.0.1:3002:3000
     volumes:
       - ./config/grafana/provisioning-lh:/etc/grafana/provisioning:ro
-      - ./data/grafana:/var/lib/grafana
+      - /Users/d/ETH2/grafana:/var/lib/grafana
     <<: *logging
 
 # EOF

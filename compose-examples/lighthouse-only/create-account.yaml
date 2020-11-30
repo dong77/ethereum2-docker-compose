@@ -2,7 +2,7 @@ version: "3.7"
 services:
   validator-import-launchpad:
     image: sigp/lighthouse:${LIGHTHOUSE_DOCKER_TAG}
-    command: lighthouse --testnet pyrmont account validator import --directory /launchpad
+    command: lighthouse account validator import --directory /validator_keys
     volumes:
-      - ./wallets:/root/.lighthouse
-      - ./launchpad:/launchpad
+      - /Users/d/ETH2/wallets:/root/.lighthouse
+      - /Users/d/ETH2/validator_keys:/validator_keys
