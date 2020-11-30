@@ -40,3 +40,9 @@ This software is provided under MIT license and therefore freely usable without 
 ETH - 0xA1DDc7ed6E7b9179C68cDEE24a5e47dE930061eE
 
 BTC - 39n4LUxbcCfJvBGvFVVwQQkGxSJ44JRYV7
+
+
+
+## My operations
+
+in project root dir, simply run `docker-compose up`.
