@@ -13,6 +13,9 @@ rule_files:
   # - "second_rules.yml"
 
 scrape_configs:
+  - job_name: 'geth'
+    static_configs:
+      - targets: ['geth:6060']
   - job_name: 'beacon'
     static_configs:
       - targets: ['beacon:5054']
