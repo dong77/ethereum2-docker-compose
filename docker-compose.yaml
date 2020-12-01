@@ -13,13 +13,12 @@ services:
     restart: always
     command: --pprof --pprofaddr=0.0.0.0 --pprofport=6060 --metrics --http --http.port=8545 --http.addr=0.0.0.0 --http.vhosts="*" --allow-insecure-unlock --http.api="db,eth,net,web3,personal"
     ports:
-      - 6060:6060/tcp
-      - 6060:6060/udp
-      - 30303:30303/tcp
-      - 30303:30303/udp
-      - 127.0.0.1:8545:8545
-      - 127.0.0.1:8546:8546
-      - 127.0.0.1:8547:8547
+      - 6060:6060
+      - 30303:30303
+      - 30304:30304
+      - 8545:8545
+      - 8546:8546
+      - 8547:8547
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /Users/d/ETH2/geth:/root/.ethereum
@@ -32,8 +31,7 @@ services:
       - /Users/d/ETH2/lighthouse:/root/.lighthouse
       - ./config/lighthouse/start-beacon-node.sh:/root/scripts/start-beacon-node.sh:ro
     ports:
-      - 9000:9000/tcp
-      - 9000:9000/udp
+      - 9000:9000
     env_file: ./config/lighthouse/.env
     command: sh /root/scripts/start-beacon-node.sh
     restart: on-failure
@@ -59,7 +57,7 @@ services:
     hostname: prometheus
     command: --storage.tsdb.retention.time=7d --config.file=/etc/prometheus/prometheus.yml
     ports:
-    - 127.0.0.1:9092:9090
+    - 9092:9090
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/prometheus/prometheus-lh.yaml:/etc/prometheus/prometheus.yml:ro
@@ -74,7 +72,7 @@ services:
     depends_on:
       - prometheus
     ports:
-      - 127.0.0.1:3002:3000
+      - 3002:3000
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/grafana/provisioning-lh:/etc/grafana/provisioning:ro
