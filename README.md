@@ -48,7 +48,11 @@ BTC - 39n4LUxbcCfJvBGvFVVwQQkGxSJ44JRYV7
 
 sudo docker ps
 
-sudo docker logs --tail 100 411f051fd287
+sudo docker logs --tail 100 ethereum2-docker-compose_geth_1
+sudo docker logs --tail 100 ethereum2-docker-compose_beacon_1
+sudo docker logs --tail 100 ethereum2-docker-compose_validator_1
+sudo docker logs --tail 100 ethereum2-docker-compose_grafana_1
+sudo docker logs --tail 100 ethereum2-docker-compose_geth_1
 
 restart a single container:
 
