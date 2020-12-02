@@ -52,7 +52,6 @@ sudo docker logs --tail 100 ethereum2-docker-compose_geth_1
 sudo docker logs --tail 100 ethereum2-docker-compose_beacon_1
 sudo docker logs --tail 100 ethereum2-docker-compose_validator_1
 sudo docker logs --tail 100 ethereum2-docker-compose_grafana_1
-sudo docker logs --tail 100 ethereum2-docker-compose_geth_1
 
 restart a single container:
 
@@ -61,3 +60,8 @@ restart a single container:
 docker-compose up --detach --build validator
 
 ```
+
+
+ssh -i "danielw_eth2_validator_new.pem" ubuntu@ec2-13-250-42-164.ap-southeast-1.compute.amazonaws.com
+
+http://ec2-13-250-42-164.ap-southeast-1.compute.amazonaws.com:3333/login
