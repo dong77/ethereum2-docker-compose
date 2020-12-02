@@ -45,4 +45,15 @@ BTC - 39n4LUxbcCfJvBGvFVVwQQkGxSJ44JRYV7
 
 ## My operations
 
-in project root dir, simply run `docker-compose up`.
+
+sudo docker ps
+
+sudo docker logs --tail 100 411f051fd287
+
+restart a single container:
+
+```
+
+docker-compose up --detach --build validator
+
+```

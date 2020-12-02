@@ -18,14 +18,14 @@ services:
       - 127.0.0.1:8545:8545
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ~/ETH2/geth:/root/.ethereum
+      - /home/ubuntu/ETH2/geth:/root/.ethereum
     <<: *logging
 
   beacon:
     image: sigp/lighthouse:latest
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ~/ETH2/lighthouse:/root/.lighthouse
+      - /home/ubuntu/ETH2/lighthouse-beacon:/root/.lighthouse
       - ./config/lighthouse/start-beacon-node.sh:/root/scripts/start-beacon-node.sh:ro
     ports:
       - 9000:9000/tcp
@@ -42,7 +42,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/lighthouse/validator/start-validator-client.sh:/root/scripts/start-validator-client.sh:ro
-      - ~/ETH2/wallets:/root/.lighthouse
+      - /home/ubuntu/ETH2/lighthouse-validator:/root/.lighthouse
     depends_on:
       - beacon
     env_file: ./config/lighthouse/validator/.env
@@ -61,7 +61,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/prometheus/prometheus-lh.yaml:/etc/prometheus/prometheus.yml:ro
-      - ~/ETH2/prometheus:/prometheus
+      - /home/ubuntu/ETH2/prometheus:/prometheus
     <<: *logging
 
   grafana:
@@ -75,7 +75,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/grafana/provisioning-lh:/etc/grafana/provisioning:ro
-      - ~/ETH2/grafana:/var/lib/grafana
+      - /home/ubuntu/ETH2/grafana:/var/lib/grafana
     <<: *logging
 
 # EOF
