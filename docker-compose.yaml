@@ -68,7 +68,7 @@ services:
     image: grafana/grafana:7.2.1
     restart: on-failure
     hostname: grafana
-    user:"1000" // run `id -u` on target machine
+    user: "1000" # run `id -u` on target machine
     depends_on:
       - prometheus
     ports:
