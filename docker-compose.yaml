@@ -21,21 +21,21 @@ services:
       - ~/ETH2/geth:/root/.ethereum
     <<: *logging
 
-  # beacon:
-  #   image: sigp/lighthouse:latest
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - ~/ETH2/lighthouse:/root/.lighthouse
-  #     - ./config/lighthouse/start-beacon-node.sh:/root/scripts/start-beacon-node.sh:ro
-  #   ports:
-  #     - 9000:9000/tcp
-  #     - 9000:9000/udp
-  #   env_file: ./config/lighthouse/.env
-  #   depends_on:
-  #     - geth
-  #   command: sh /root/scripts/start-beacon-node.sh
-  #   restart: on-failure
-  #   <<: *logging
+  beacon:
+    image: sigp/lighthouse:latest
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ~/ETH2/lighthouse:/root/.lighthouse
+      - ./config/lighthouse/start-beacon-node.sh:/root/scripts/start-beacon-node.sh:ro
+    ports:
+      - 9000:9000/tcp
+      - 9000:9000/udp
+    env_file: ./config/lighthouse/.env
+    depends_on:
+      - geth
+    command: sh /root/scripts/start-beacon-node.sh
+    restart: on-failure
+    <<: *logging
 
   # validator:
   #   image: sigp/lighthouse:latest
