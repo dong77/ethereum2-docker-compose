@@ -19,7 +19,7 @@ services:
       - 8545:8545
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./data/geth:/root/.ethereum
+      - /home/ubuntu/eth2/geth:/root/.ethereum
     <<: *logging
 
   beacon:
@@ -40,7 +40,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/prysm/slasher/beacon.yaml:/config/beacon.yaml:ro
-      - ./data/prysm/beacon-slasher:/data
+      - /home/ubuntu/eth2/prysm/beacon-slasher:/data
     <<: *logging
 
   validator:
@@ -53,7 +53,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/prysm/validator.yaml:/config/validator.yaml:ro
-      - ./data/prysm/validator:/data
+      - /home/ubuntu/eth2/prysm/validator:/data
     <<: *logging
 
   slasher:
@@ -66,7 +66,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/prysm/slasher/slasher.yaml:/config/slasher.yaml:ro
-      - ./data/prysm/slasher:/data
+      - /home/ubuntu/eth2/prysm/slasher:/data
     <<: *logging
 
   prometheus:
@@ -80,7 +80,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/prometheus/prometheus-p.yaml:/etc/prometheus/prometheus.yml
-      - ./data/prometheus:/prometheus
+      - /home/ubuntu/eth2/prometheus:/prometheus
     <<: *logging
 
   grafana:
@@ -94,7 +94,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/grafana/provisioning-p:/etc/grafana/provisioning
-      - ./data/grafana:/var/lib/grafana
+      - /home/ubuntu/eth2/grafana:/var/lib/grafana
     <<: *logging
 
 # EOF
