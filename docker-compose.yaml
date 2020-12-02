@@ -72,7 +72,7 @@ services:
     depends_on:
       - prometheus
     ports:
-      - 80:3000
+      - 3333:3000
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./config/grafana/provisioning-lh:/etc/grafana/provisioning:ro
