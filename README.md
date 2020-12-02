@@ -12,7 +12,7 @@ docker-compose | Description
 [Teku standalone](./compose-examples/teku-only) | Stand-alone [Teku](https://github.com/ConsenSys/teku) node and monitoring
 
 ## Testnet (Pyrmont) or Mainnet
-**You are viewing this repository with configuration for Pyrmont**
+**You are viewing this repository with configuration for Mainnet**
 
 Default is Pyrmont, the long-term testnet for Ethereum 2.0. For running on Mainnet, checkout `mainnet` branch by executing the following commands after `git clone`:
 ```
@@ -40,3 +40,9 @@ This software is provided under MIT license and therefore freely usable without 
 ETH - 0xA1DDc7ed6E7b9179C68cDEE24a5e47dE930061eE
 
 BTC - 39n4LUxbcCfJvBGvFVVwQQkGxSJ44JRYV7
+
+
+
+## My operations
+
+in project root dir, simply run `docker-compose up`.

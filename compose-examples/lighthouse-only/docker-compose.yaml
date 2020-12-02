@@ -11,18 +11,27 @@ services:
   geth:
     image: ethereum/client-go:${GETH_DOCKER_TAG}
     restart: always
-    command: --goerli --http --http.port=8545 --http.addr=0.0.0.0 --http.vhosts="*" --allow-insecure-unlock --http.api="db,eth,net,web3,personal"
+    command: --pprof --pprofaddr=0.0.0.0 --pprofport=6060 --metrics --http --http.port=8545 --http.addr=0.0.0.0 --http.vhosts="*" --allow-insecure-unlock --http.api="db,eth,net,web3,personal"
     ports:
-      - 30305:30303/tcp
-      - 30305:30303/udp
+      - 6060:6060/tcp
+      - 6060:6060/udp
+      - 30303:30303/tcp
+      - 30303:30303/udp
+      - 30304:30304/tcp
+      - 30304:30304/udp
+      - 127.0.0.1:8545:8545
+      - 127.0.0.1:8546:8546
+      - 127.0.0.1:8547:8547
     volumes:
-      - ./data/geth:/root/.ethereum
+      - /etc/localtime:/etc/localtime:ro
+      - /Users/d/ETH2/geth:/root/.ethereum
     <<: *logging
 
   beacon:
     image: sigp/lighthouse:${LIGHTHOUSE_DOCKER_TAG}
     volumes:
-      - ./data/sigmaprime/lighthouse:/root/.lighthouse
+      - /etc/localtime:/etc/localtime:ro
+      - /Users/d/ETH2/lighthouse:/root/.lighthouse
       - ./config/lighthouse/start-beacon-node.sh:/root/scripts/start-beacon-node.sh:ro
     ports:
       - 9000:9000/tcp
@@ -35,8 +44,9 @@ services:
   validator:
     image: sigp/lighthouse:${LIGHTHOUSE_DOCKER_TAG}
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./config/lighthouse/validator/start-validator-client.sh:/root/scripts/start-validator-client.sh:ro
-      - ./wallets:/root/.lighthouse
+      - /Users/d/ETH2/wallets:/root/.lighthouse
     depends_on:
       - beacon
     env_file: ./config/lighthouse/validator/.env
@@ -53,21 +63,24 @@ services:
     ports:
     - 127.0.0.1:9092:9090
     volumes:
-    - ./config/prometheus/prometheus-lh.yaml:/etc/prometheus/prometheus.yml:ro
-    - ./data/prometheus:/prometheus
+      - /etc/localtime:/etc/localtime:ro
+      - ./config/prometheus/prometheus-lh.yaml:/etc/prometheus/prometheus.yml:ro
+      - /Users/d/ETH2/prometheus:/prometheus
     <<: *logging
 
   grafana:
     image: grafana/grafana:7.2.1
     restart: on-failure
     hostname: grafana
+    user: "502"
     depends_on:
       - prometheus
     ports:
       - 127.0.0.1:3002:3000
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./config/grafana/provisioning-lh:/etc/grafana/provisioning:ro
-      - ./data/grafana:/var/lib/grafana
+      - /Users/d/ETH2/grafana:/var/lib/grafana
     <<: *logging
 
 # EOF

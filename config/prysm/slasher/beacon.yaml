@@ -33,7 +33,7 @@ historical-slasher-node: yes
 subscribe-all-subnets: yes
 block-batch-limit: 512
 
-pyrmont: yes
+mainnet: yes
 
 # https://github.com/attestantio/vouch/issues/6
 rpc-max-page-size: 100000

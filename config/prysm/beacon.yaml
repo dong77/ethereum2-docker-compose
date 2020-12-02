@@ -10,8 +10,8 @@ accept-terms-of-use: yes
 datadir: /data
 
 #######################
-# Connectivity settings 
-p2p-host-ip: ""
+# Connectivity settings
+p2p-host-ip: "45.135.186.105"
 p2p-host-dns: ""
 
 rpc-host: 0.0.0.0
@@ -29,7 +29,7 @@ p2p-max-peers: 100
 # Connection to geth container
 http-web3provider: http://geth:8545
 
-pyrmont: yes
+mainnet: yes
 
 # https://github.com/attestantio/vouch/issues/6
 rpc-max-page-size: 100000
