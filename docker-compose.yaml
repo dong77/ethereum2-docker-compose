@@ -37,45 +37,45 @@ services:
     restart: on-failure
     <<: *logging
 
-  validator:
-    image: sigp/lighthouse:latest
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ./config/lighthouse/validator/start-validator-client.sh:/root/scripts/start-validator-client.sh:ro
-      - ~/ETH2/wallets:/root/.lighthouse
-    depends_on:
-      - beacon
-    env_file: ./config/lighthouse/validator/.env
-    command: sh /root/scripts/start-validator-client.sh
-    restart: on-failure
-    <<: *logging
+  # validator:
+  #   image: sigp/lighthouse:latest
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ./config/lighthouse/validator/start-validator-client.sh:/root/scripts/start-validator-client.sh:ro
+  #     - ~/ETH2/wallets:/root/.lighthouse
+  #   depends_on:
+  #     - beacon
+  #   env_file: ./config/lighthouse/validator/.env
+  #   command: sh /root/scripts/start-validator-client.sh
+  #   restart: on-failure
+  #   <<: *logging
 
-  prometheus:
-    image: prom/prometheus:v2.21.0
-    user: root # https://github.com/prometheus/prometheus/issues/5976
-    restart: on-failure
-    hostname: prometheus
-    command: --storage.tsdb.retention.time=7d --config.file=/etc/prometheus/prometheus.yml
-    ports:
-    - 127.0.0.1:9090:9090
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ./config/prometheus/prometheus-lh.yaml:/etc/prometheus/prometheus.yml:ro
-      - ~/ETH2/prometheus:/prometheus
-    <<: *logging
+  # prometheus:
+  #   image: prom/prometheus:v2.21.0
+  #   user: root # https://github.com/prometheus/prometheus/issues/5976
+  #   restart: on-failure
+  #   hostname: prometheus
+  #   command: --storage.tsdb.retention.time=7d --config.file=/etc/prometheus/prometheus.yml
+  #   ports:
+  #   - 127.0.0.1:9090:9090
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ./config/prometheus/prometheus-lh.yaml:/etc/prometheus/prometheus.yml:ro
+  #     - ~/ETH2/prometheus:/prometheus
+  #   <<: *logging
 
-  grafana:
-    image: grafana/grafana:7.2.1
-    restart: on-failure
-    hostname: grafana
-    depends_on:
-      - prometheus
-    ports:
-      - 80:3000
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ./config/grafana/provisioning-lh:/etc/grafana/provisioning:ro
-      - ~/ETH2/grafana:/var/lib/grafana
-    <<: *logging
+  # grafana:
+  #   image: grafana/grafana:7.2.1
+  #   restart: on-failure
+  #   hostname: grafana
+  #   depends_on:
+  #     - prometheus
+  #   ports:
+  #     - 80:3000
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - ./config/grafana/provisioning-lh:/etc/grafana/provisioning:ro
+  #     - ~/ETH2/grafana:/var/lib/grafana
+  #   <<: *logging
 
 # EOF
