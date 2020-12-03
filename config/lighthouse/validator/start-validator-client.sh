@@ -16,7 +16,7 @@ WALLET_PASSFILE=$DATADIR/secrets/$WALLET_NAME.pass
 
 if [ "$START_VALIDATOR" != "" ]; then
 	if [ "$IMPORT_LAUNCHPAD_KEYSTORES" != "" ]; then
-		lighthouse \
+		echo $START_VALIDATOR | lighthouse \
 			--network $NETWORK \
 			account validator import \
 			--directory /root/validator_keys \
