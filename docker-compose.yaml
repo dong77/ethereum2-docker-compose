@@ -43,6 +43,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./config/lighthouse/validator/start-validator-client.sh:/root/scripts/start-validator-client.sh:ro
       - /home/ubuntu/ETH2/lighthouse-validator:/root/.lighthouse
+      - /home/ubuntu/ETH2/validator_keys:/root/validator_keys:ro
     depends_on:
       - beacon
     env_file: ./config/lighthouse/validator/.env
