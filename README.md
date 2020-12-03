@@ -57,6 +57,11 @@ restart a single container:
 
 ```
 sudo docker-compose rm validator
+
+docker-compose stop
+docker-compose rm -f
+docker-compose pull
+docker-compose up -d
 ```
 
 
