@@ -56,9 +56,7 @@ sudo docker logs --tail 100 ethereum2-docker-compose_grafana_1
 restart a single container:
 
 ```
-
-docker-compose up --detach --build validator
-
+sudo docker-compose rm validator
 ```
 
 
