@@ -58,13 +58,16 @@ restart a single container:
 ```
 sudo docker-compose rm validator
 
-docker-compose stop
-docker-compose rm -f
-docker-compose pull
-docker-compose up -d
+sudo docker-compose stop
+sudo docker-compose rm -f
+sudo docker-compose pull
+sudo docker-compose up -d
 ```
 
 
 ssh -i "danielw_eth2_validator_new.pem" ubuntu@ec2-13-250-42-164.ap-southeast-1.compute.amazonaws.com
 
 http://ec2-13-250-42-164.ap-southeast-1.compute.amazonaws.com:3333/login
+
+Note: you can verify it with the following command to check if it returns the client version correctly.
+curl -H "Content-Type: application/json" -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":67}' http://<YourServerLocation>:8545
