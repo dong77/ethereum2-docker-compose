@@ -44,15 +44,16 @@ BTC - 39n4LUxbcCfJvBGvFVVwQQkGxSJ44JRYV7
 
 
 ## My operations
-
+```
+ssh -i "danielw_eth2_validator_new.pem" ubuntu@ec2-13-250-42-164.ap-southeast-1.compute.amazonaws.com
 
 sudo docker ps
 
-sudo docker logs --tail 100 ethereum2-docker-compose_geth_1
-sudo docker logs --tail 100 ethereum2-docker-compose_beacon_1
-sudo docker logs --tail 100 ethereum2-docker-compose_validator_1
-sudo docker logs --tail 100 ethereum2-docker-compose_grafana_1
-
+sudo docker logs --tail 30 ethereum2-docker-compose_geth_1
+sudo docker logs --tail 30 ethereum2-docker-compose_beacon_1
+sudo docker logs --tail 30 ethereum2-docker-compose_validator_1
+sudo docker logs --tail 30 ethereum2-docker-compose_grafana_1
+```
 restart a single container:
 
 ```
@@ -64,8 +65,14 @@ sudo docker-compose pull
 sudo docker-compose up -d
 ```
 
+## Check DiskSpace
 
-ssh -i "danielw_eth2_validator_new.pem" ubuntu@ec2-13-250-42-164.ap-southeast-1.compute.amazonaws.com
+```
+cd ETH2
+sudo du -sh geth lighthouse-beacon/ lighthouse-validator/
+```
+
+
 
 http://ec2-13-250-42-164.ap-southeast-1.compute.amazonaws.com:3333/login
 
