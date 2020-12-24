@@ -63,6 +63,7 @@ sudo docker-compose stop
 sudo docker-compose rm -f
 sudo docker-compose pull
 sudo docker-compose up -d
+sudo docker-compose restart validator
 ```
 
 ## Check DiskSpace
