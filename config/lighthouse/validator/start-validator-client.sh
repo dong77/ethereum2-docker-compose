@@ -27,9 +27,9 @@ if [ "$START_VALIDATOR" != "" ]; then
 	fi
 
 	exec lighthouse \
+		validator \
 		--debug-level $DEBUG_LEVEL \
 		--network $NETWORK \
-		validator \
 		--beacon-nodes http://beacon:5052 \
 		--init-slashing-protection
 fi

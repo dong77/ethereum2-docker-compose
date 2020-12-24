@@ -22,9 +22,9 @@ if [ "$GRAFFITI" != "" ]; then
 fi
 
 exec lighthouse \
+        beacon_node \
         --debug-level $DEBUG_LEVEL \
         --network $NETWORK \
-        beacon_node \
         --eth1-endpoint $VOTING_ETH1_NODE \
         --http \
         --http-address 0.0.0.0 \
