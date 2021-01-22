@@ -30,7 +30,7 @@ services:
     command: --config-file=/config/beacon.yaml
     ports:
       - 5051:5051
-      - 9001:9001  
+      - 9001:9001
     volumes:
       - ./data/consensys/teku:/opt/teku/data
       - ./config/teku/beacon.yaml:/config/beacon.yaml:ro
@@ -51,7 +51,7 @@ services:
     <<: *logging
 
   grafana:
-    image: grafana/grafana:7.2.1
+    image: grafana/grafana:7.0.1
     restart: on-failure
     hostname: grafana
     depends_on:
