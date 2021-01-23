@@ -10,7 +10,12 @@ Service | Pyrmont (Testnet) | Mainnet
 Block explorer | https://beaconscan.com/pyrmont or https://pyrmont.beaconcha.in/ | https://beaconscan.com/ or https://beaconcha.in/
 Ethereum Launchpad | https://pyrmont.launchpad.ethereum.org/ | https://launchpad.ethereum.org/
 
+###
+Need to do on the machine:
 
+```
+sudo chmod 777 ~/ETH2/grafana
+```
 
 ## First 100 Validators
 ```
